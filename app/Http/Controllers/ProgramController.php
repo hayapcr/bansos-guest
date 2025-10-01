@@ -15,7 +15,7 @@ class ProgramController extends Controller
         $programs = [
             [
                 'program_id' => 1,
-                'kode' => 'PB2025-001',
+                'kode' => 'BS-001',
                 'nama_program' => 'Bantuan Sembako Desa',
                 'tahun' => 2025,
                 'anggaran' => 50000000,
@@ -23,7 +23,7 @@ class ProgramController extends Controller
             ],
             [
                 'program_id' => 2,
-                'kode' => 'PB2025-002',
+                'kode' => 'BS-002',
                 'nama_program' => 'Modal Usaha Mikro',
                 'tahun' => 2025,
                 'anggaran' => 75000000,
@@ -31,7 +31,7 @@ class ProgramController extends Controller
             ],
             [
                 'program_id' => 3,
-                'kode' => 'PB2025-003',
+                'kode' => 'BS-003',
                 'nama_program' => 'Beasiswa Pendidikan',
                 'tahun' => 2025,
                 'anggaran' => 30000000,
