@@ -1,21 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Guest;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
 {
-    /**
-     * Menampilkan daftar program bantuan sosial.
-     */
+
     public function index()
     {
         $programs = [
             [
                 'program_id' => 1,
-                'kode' => 'BS-001',
+                'kode' => 'BANSOS-001',
                 'nama_program' => 'Bantuan Sembako Desa',
                 'tahun' => 2025,
                 'anggaran' => 50000000,
@@ -23,7 +21,7 @@ class ProgramController extends Controller
             ],
             [
                 'program_id' => 2,
-                'kode' => 'BS-002',
+                'kode' => 'BANSOS-002',
                 'nama_program' => 'Modal Usaha Mikro',
                 'tahun' => 2025,
                 'anggaran' => 75000000,
@@ -31,7 +29,7 @@ class ProgramController extends Controller
             ],
             [
                 'program_id' => 3,
-                'kode' => 'BS-003',
+                'kode' => 'BANSOS-003',
                 'nama_program' => 'Beasiswa Pendidikan',
                 'tahun' => 2025,
                 'anggaran' => 30000000,
