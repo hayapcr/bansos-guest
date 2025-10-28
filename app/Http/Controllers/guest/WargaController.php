@@ -31,16 +31,18 @@ class WargaController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama'   => 'required|string|max:100',
-            'nik'    => 'required|unique:warga,nik',
-            'alamat' => 'required',
-            'no_hp'  => 'nullable|string|max:20',
+            'no_ktp'        => 'required|unique:warga,no_ktp',
+            'nama'          => 'required|string|max:100',
+            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+            'agama'         => 'required|string|max:50',
+            'pekerjaan'     => 'nullable|string|max:100',
+            'telp'          => 'nullable|string|max:20',
+            'email'         => 'nullable|email|max:100',
         ]);
 
         Warga::create($validated);
 
-        return redirect()
-            ->route('guest.warga.index')
+        return redirect()->route('guest.warga.index')
             ->with('success', 'Data warga berhasil ditambahkan!');
     }
 
@@ -61,16 +63,18 @@ class WargaController extends Controller
         $warga = Warga::findOrFail($id);
 
         $validated = $request->validate([
-            'nama'   => 'required|string|max:100',
-            'nik'    => 'required|unique:warga,nik,' . $id . ',warga_id',
-            'alamat' => 'required',
-            'no_hp'  => 'nullable|string|max:20',
+            'no_ktp'        => 'required|unique:warga,no_ktp,' . $id . ',warga_id',
+            'nama'          => 'required|string|max:100',
+            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+            'agama'         => 'required|string|max:50',
+            'pekerjaan'     => 'nullable|string|max:100',
+            'telp'          => 'nullable|string|max:20',
+            'email'         => 'nullable|email|max:100',
         ]);
 
         $warga->update($validated);
 
-        return redirect()
-            ->route('guest.warga.index')
+        return redirect()->route('guest.warga.index')
             ->with('success', 'Data warga berhasil diperbarui!');
     }
 

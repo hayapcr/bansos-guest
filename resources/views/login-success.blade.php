@@ -7,60 +7,71 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #0d1b2a;
-      color: #fff;
-      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #eaf8f3, #f6fffa);
+      font-family: 'Poppins', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       text-align: center;
-      flex-direction: column;
-      padding: 20px;
+      color: #007a66;
     }
-    .card {
+
+    .card-success {
       background: #ffffff;
-      color: #0d1b2a;
-      padding: 60px 40px;
       border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 122, 102, 0.15);
+      padding: 60px 40px;
+      max-width: 480px;
       width: 90%;
-      max-width: 520px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
-    h2 {
-      font-weight: bold;
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 25px;
-    }
-    .btn {
-      background-color: #1b263b;
-      color: #fff;
-      border: none;
-      font-size: 1.2rem;
-      padding: 12px 20px;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background-color: #0d1b2a;
-    }
+
     .emoji {
-      font-size: 70px;
+      font-size: 60px;
       margin-bottom: 15px;
     }
+
+    h2 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .btn-home {
+      background-color: #007a66;
+      color: white;
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-weight: 600;
+      border: none;
+      transition: 0.3s;
+    }
+
+    .btn-home:hover {
+      background-color: #006956;
+    }
   </style>
+
+  {{-- 🔹 Redirect otomatis ke dashboard setelah 3 detik --}}
+  <script>
+    setTimeout(function() {
+      window.location.href = "{{ route('dashboard') }}";
+    }, 3000);
+  </script>
 </head>
 <body>
-  <div class="card">
+  <div class="card-success">
     <div class="emoji">🎉</div>
-    <h2>Halo, {{ $username }} 👋</h2>
-    <p>Login berhasil!<br>Selamat datang di <strong>KITAPEDULI</strong>.</p>
-    <a href="{{ route('auth.index') }}" class="btn">Kembali ke Login</a>
+    <h2>Halo, {{ $email }} 👋</h2>
+    <p>Login berhasil!<br>Selamat datang di <strong>BinaDesa</strong>.</p>
+    <p class="text-muted" style="font-size: 0.9rem;">Mengalihkan ke Dashboard dalam 3 detik...</p>
+    <a href="{{ route('dashboard') }}" class="btn-home">Pergi ke Dashboard Sekarang</a>
   </div>
-
 </body>
 </html>

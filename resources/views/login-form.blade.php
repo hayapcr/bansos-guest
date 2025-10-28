@@ -7,67 +7,86 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #0d1b2a;
-      color: #fff;
-      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #eaf8f3, #f6fffa);
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      font-family: 'Poppins', sans-serif;
     }
-    .card {
+
+    .login-card {
       background: #ffffff;
-      color: #0d1b2a;
-      width: 90%;
-      max-width: 500px;
-      border-radius: 15px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 122, 102, 0.15);
       padding: 50px 40px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-    h2 {
+      max-width: 480px;
+      width: 90%;
       text-align: center;
-      font-weight: bold;
-      margin-bottom: 30px;
+    }
+
+    .brand {
       font-size: 2rem;
+      font-weight: 700;
+      color: #007a66;
+      margin-bottom: 5px;
     }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #6c757d;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-weight: 600;
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      color: #007a66;
+    }
+
     .form-label {
-      font-size: 1.2rem;
-      font-weight: bold;
+      font-weight: 600;
+      text-align: left;
+      display: block;
     }
+
     .form-control {
-      height: 55px;
-      font-size: 1.1rem;
+      height: 50px;
       border-radius: 10px;
+      border: 1.5px solid #c8e6d6;
+      transition: 0.3s;
     }
-    .btn {
-      background-color: #1b263b;
-      color: #fff;
-      font-size: 1.2rem;
+
+    .form-control:focus {
+      border-color: #007a66;
+      box-shadow: 0 0 0 0.2rem rgba(0, 122, 102, 0.2);
+    }
+
+    .btn-login {
+      background-color: #007a66;
+      color: white;
+      font-weight: 600;
       border-radius: 10px;
+      border: none;
+      width: 100%;
       padding: 12px;
       margin-top: 10px;
-      width: 100%;
+      transition: 0.3s;
     }
-    .btn:hover {
-      background-color: #0d1b2a;
+
+    .btn-login:hover {
+      background-color: #006956;
     }
-    .brand {
-      text-align: center;
-      font-weight: 800;
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
-    .subtitle {
-      text-align: center;
-      color: #415a77;
-      font-size: 1rem;
-      margin-bottom: 30px;
+
+    .alert {
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="brand">KITAPEDULI</div>
+  <div class="login-card">
+    <div class="brand">BinaDesa</div>
     <div class="subtitle">Sistem Informasi Bantuan Sosial</div>
 
     <h2>Login</h2>
@@ -78,19 +97,19 @@
 
     <form action="{{ route('auth.login') }}" method="POST">
       @csrf
-      <div class="mb-3">
-        <label class="form-label">Username</label>
-        <input type="text" name="username" class="form-control" placeholder="Masukkan username..." required>
+
+      <div class="mb-3 text-start">
+        <label class="form-label">Email</label>
+        <input type="text" name="email" class="form-control" placeholder="Masukkan email..." required>
       </div>
 
-      <div class="mb-4">
+      <div class="mb-4 text-start">
         <label class="form-label">Password</label>
         <input type="password" name="password" class="form-control" placeholder="Masukkan password..." required>
       </div>
 
-      <button type="submit" class="btn">Masuk</button>
+      <button type="submit" class="btn-login">Masuk</button>
     </form>
-
   </div>
 </body>
 </html>

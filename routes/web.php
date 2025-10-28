@@ -6,7 +6,7 @@ use App\Http\Controllers\Guest\DashboardController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\Guest\WargaController;
 use App\Http\Controllers\Guest\ProgramBantuanController;
-
+use App\Http\Controllers\Guest\UserController;
 
 // Halaman utama default Laravel
 Route::get('/', function () {
@@ -27,4 +27,7 @@ Route::prefix('guest')->name('guest.')->group(function () {
 // CRUD Warga & Program Bantuan
 Route::resource('warga', WargaController::class);
 Route::resource('program_bantuan', ProgramBantuanController::class);
+
+// CRUD User
+    Route::resource('user', UserController::class);
 });
