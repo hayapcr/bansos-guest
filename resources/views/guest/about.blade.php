@@ -1,8 +1,8 @@
 @extends('guest.layouts.main')
 
 @section('content')
-<section class="py-5">
-    <div class="container text-center">
+<section class="py-5 about-section d-flex align-items-center">
+    <div class="container text-center text-white">
         {{-- Judul & Deskripsi --}}
         <div class="mb-5">
             <h2 class="fw-bold text-success">Tentang <span class="text-dark">BinaDesa</span></h2>
@@ -70,6 +70,32 @@
 </section>
 
 <style>
+/* 🌄 Full background di seluruh layar */
+.about-section {
+    background-image: url('{{ asset("assets-guest/img/bg-bansos.jpg") }}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 50vh; /* 🔹 Menutupi seluruh tinggi layar */
+}
+
+/* 🔲 Overlay agar teks tetap terbaca */
+.about-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.85); /* lapisan putih transparan */
+    z-index: 1;
+}
+
+/* Pastikan konten di atas overlay */
+.about-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Efek hover card */
 .hover-scale {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -77,6 +103,7 @@
     transform: translateY(-6px);
     box-shadow: 0 10px 20px rgba(0, 122, 102, 0.15);
 }
+
 .icon-wrapper {
     flex-shrink: 0;
 }
