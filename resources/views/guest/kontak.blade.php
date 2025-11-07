@@ -28,7 +28,7 @@
                         </div>
                         <div>
                             <h6 class="fw-bold text-success mb-1">Alamat</h6>
-                            <p class="mb-0 text-muted">Jl. Saleh Abud 18–19 Otista, Jakarta Timur 13330</p>
+                            <p class="mb-0 text-muted">Jl. Jendral Sudirman 18–19 Otista, Pekanbaru 13330</p>
                         </div>
                     </div>
 
