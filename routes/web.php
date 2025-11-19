@@ -8,15 +8,14 @@ use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\Guest\WargaController;
 use App\Http\Controllers\Guest\ProgramBantuanController;
 use App\Http\Controllers\Guest\UserController;
+use App\Http\Controllers\Guest\PendaftarBantuanController;
+use App\Http\Controllers\Guest\VerifikasiLapanganController;
 
-// Halaman utama default Laravel
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 // Login
-Route::get('/auth', [AuthController::class, 'index'])->name('auth.index');
-Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('/', [AuthController::class, 'index'])->name('auth.index');
+Route::post('/ah/login', [AuthController::class, 'login'])->name('auth.login');
 
 // Dashboard BinaDesa
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -47,4 +46,10 @@ Route::resource('program_bantuan', ProgramBantuanController::class);
 
 // CRUD User
     Route::resource('user', UserController::class);
+
+// CRUD Pendaftar Bantuan (DITAMBAHKAN)
+    Route::resource('pendaftar_bantuan', PendaftarBantuanController::class);
+
+// CRUD Verifikasi Lapangan (DITAMBAHKAN)
+    Route::resource('verifikasi_lapangan', VerifikasiLapanganController::class);
 });
