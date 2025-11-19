@@ -15,7 +15,7 @@ class CreateProgramBantuan extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 15; $i++) {   // 🔥 ubah 5 menjadi 15
             $kode = 'B-' . str_pad($i, 3, '0', STR_PAD_LEFT);
 
             ProgramBantuan::updateOrCreate(
