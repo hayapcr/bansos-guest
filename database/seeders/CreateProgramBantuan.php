@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 use App\Models\ProgramBantuan;
 
 class CreateProgramBantuan extends Seeder
@@ -13,24 +13,31 @@ class CreateProgramBantuan extends Seeder
      */
     public function run(): void
     {
-        ProgramBantuan::updateOrCreate(
-            ['kode' => 'B-001'], // unique key
-            [
-                'nama_program' => 'Bantuan Sembako',
-                'tahun' => 2024,
-                'deskripsi' => 'Program bantuan sembako untuk keluarga kurang mampu.',
-                'anggaran' => 150000000.00
-            ]
-        );
+        $faker = Faker::create('id_ID');
 
-        ProgramBantuan::updateOrCreate(
-            ['kode' => 'B-002'], // unique key
-            [
-                'nama_program' => 'Bantuan Pendidikan',
-                'tahun' => 2024,
-                'deskripsi' => 'Bantuan biaya pendidikan untuk siswa kurang mampu.',
-                'anggaran' => 200000000.00
-            ]
-        );
+        for ($i = 1; $i <= 5; $i++) {
+            $kode = 'B-' . str_pad($i, 3, '0', STR_PAD_LEFT);
+
+            ProgramBantuan::updateOrCreate(
+                ['kode' => $kode],
+                [
+                    'nama_program' => $faker->randomElement([
+                        'Bantuan Sembako',
+                        'Bantuan Pendidikan',
+                        'Bantuan Kesehatan',
+                        'Bantuan UMKM',
+                        'Bantuan Rumah Layak Huni',
+                        'Bantuan Lansia',
+                        'Bantuan Peralatan Sekolah'
+                    ]),
+
+                    'tahun' => $faker->numberBetween(2022, 2025),
+
+                    'deskripsi' => $faker->sentence(10),
+
+                    'anggaran' => $faker->numberBetween(50000000, 500000000) // 50 juta - 500 juta
+                ]
+            );
+        }
     }
 }
