@@ -8,7 +8,6 @@
             </a>
         </div>
 
-
         <div class="row g-4">
             @forelse($data as $row)
                 <div class="col-md-4">
@@ -37,5 +36,11 @@
                 <div class="text-center text-muted mt-4">Belum ada pendaftar.</div>
             @endforelse
         </div>
+
+        {{--  Tambahkan Pagination di sini --}}
+        <div class="mt-4 d-flex justify-content-center">
+            {{ $data->links('pagination::bootstrap-5') }}
+        </div>
+
     </div>
 @endsection

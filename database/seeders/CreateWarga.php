@@ -15,7 +15,7 @@ class CreateWarga extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 150; $i++) {
 
             $jenisKelamin = $faker->randomElement(['Laki-laki', 'Perempuan']);
 

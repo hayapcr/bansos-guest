@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CreateFirstUser::class,
             CreateProgramBantuan::class,
+            CreateWarga::class,
+            CreatePendaftarBantuan::class,
         ]);
     }
 }

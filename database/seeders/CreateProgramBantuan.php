@@ -15,25 +15,39 @@ class CreateProgramBantuan extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        for ($i = 1; $i <= 15; $i++) {   // 🔥 ubah 5 menjadi 15
+        for ($i = 1; $i <= 100; $i++) {   //  buat 100 data
             $kode = 'B-' . str_pad($i, 3, '0', STR_PAD_LEFT);
+
+            $namaProgram = $faker->randomElement([
+                'Bantuan Sembako',
+                'Bantuan Pendidikan',
+                'Bantuan Kesehatan',
+                'Bantuan UMKM',
+                'Bantuan Rumah Layak Huni',
+                'Bantuan Lansia',
+                'Bantuan Peralatan Sekolah'
+            ]);
+
+            //  Deskripsi otomatis sesuai nama program
+            $deskripsiList = [
+                'Bantuan Sembako'           => 'Program bantuan berupa paket sembako untuk membantu kebutuhan pokok masyarakat.',
+                'Bantuan Pendidikan'        => 'Program bantuan untuk mendukung biaya pendidikan siswa dari keluarga kurang mampu.',
+                'Bantuan Kesehatan'         => 'Program bantuan layanan dan fasilitas kesehatan bagi masyarakat yang membutuhkan.',
+                'Bantuan UMKM'              => 'Program dukungan bagi pelaku UMKM berupa modal dan pelatihan usaha.',
+                'Bantuan Rumah Layak Huni'  => 'Program bantuan perbaikan atau pembangunan rumah agar layak ditempati.',
+                'Bantuan Lansia'            => 'Program bantuan bagi warga lansia dalam bentuk kebutuhan harian dan layanan sosial.',
+                'Bantuan Peralatan Sekolah' => 'Program bantuan penyediaan peralatan sekolah untuk mendukung kegiatan belajar siswa.',
+            ];
 
             ProgramBantuan::updateOrCreate(
                 ['kode' => $kode],
                 [
-                    'nama_program' => $faker->randomElement([
-                        'Bantuan Sembako',
-                        'Bantuan Pendidikan',
-                        'Bantuan Kesehatan',
-                        'Bantuan UMKM',
-                        'Bantuan Rumah Layak Huni',
-                        'Bantuan Lansia',
-                        'Bantuan Peralatan Sekolah'
-                    ]),
+                    'nama_program' => $namaProgram,
 
-                    'tahun' => $faker->numberBetween(2022, 2025),
+                    'tahun' => $faker->numberBetween(2020, 2025),
 
-                    'deskripsi' => $faker->sentence(10),
+                    //  deskripsi sesuai nama program
+                    'deskripsi' => $deskripsiList[$namaProgram],
 
                     'anggaran' => $faker->numberBetween(50000000, 500000000) // 50 juta - 500 juta
                 ]

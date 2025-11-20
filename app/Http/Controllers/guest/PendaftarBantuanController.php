@@ -15,7 +15,7 @@ class PendaftarBantuanController extends Controller
      */
     public function index()
     {
-        $data = PendaftarBantuan::with(['program','warga'])->get();
+        $data = PendaftarBantuan::with(['program','warga'])->paginate(12);
         return view('guest.pendaftar_bantuan.index', compact('data'));
     }
 

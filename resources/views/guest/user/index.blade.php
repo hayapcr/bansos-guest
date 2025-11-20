@@ -9,7 +9,6 @@
     </a>
   </div>
 
-
   @forelse($users as $u)
     <div class="card mb-3 border-0 shadow-sm rounded-4 hover-scale">
       <div class="card-body d-flex align-items-center justify-content-between flex-wrap">
@@ -22,7 +21,6 @@
           <div>
             <h5 class="fw-bold text-success mb-1">{{ $u->name }}</h5>
             <small class="d-block text-muted">Email: {{ $u->email }}</small>
-            {{-- Tambah info lain jika ada --}}
           </div>
         </div>
 
@@ -44,9 +42,14 @@
   @empty
     <div class="text-center text-muted mt-4">Belum ada data user.</div>
   @endforelse
+
+  {{-- Pagination --}}
+  <div class="mt-4 d-flex justify-content-center">
+      {{ $users->links('pagination::bootstrap-5') }}
+  </div>
+
 </div>
 
-{{-- Hover effect same as warga --}}
 @push('styles')
 <style>
 .hover-scale { transition: transform 0.3s ease, box-shadow 0.3s ease; }
@@ -54,4 +57,5 @@
 .icon-wrapper { flex-shrink: 0; }
 </style>
 @endpush
+
 @endsection
