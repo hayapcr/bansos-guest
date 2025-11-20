@@ -11,9 +11,16 @@ class WargaController extends Controller
     /**
      * Tampilkan daftar warga
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Warga::paginate(10);
+        $filterableColumns = ['jenis_kelamin'];
+       $data = Warga::filter($request, $filterableColumns)
+            ->when($request->search, function ($q) use ($request) {
+                $q->where('nama', 'like', '%'.$request->search.'%')
+                  ->orWhere('no_ktp', 'like', '%'.$request->search.'%');
+            })
+            ->paginate(10)
+            ->withQueryString();
         return view('guest.warga.index', compact('data'));
     }
 

@@ -14,7 +14,7 @@ class VerifikasiLapanganController extends Controller
      */
     public function index()
     {
-        $data = VerifikasiLapangan::with('pendaftar')->get();
+        $data = VerifikasiLapangan::with('pendaftar')->paginate(12);
         return view('guest.verifikasi_lapangan.index', compact('data'));
     }
 

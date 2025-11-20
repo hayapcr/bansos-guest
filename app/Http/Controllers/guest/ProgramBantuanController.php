@@ -11,10 +11,16 @@ class ProgramBantuanController extends Controller
     /**
      * Tampilkan daftar program bantuan
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = ProgramBantuan::paginate(12);
-        return view('guest.program_bantuan.index', compact('data'));
+        $filterableColumns = ['nama_program'];
+        $searchableColumns = ['tahun'];
+        $data = ProgramBantuan::filter($request, $filterableColumns)
+                    ->search($request, $searchableColumns)
+                    ->paginate(12)
+                    ->withQueryString();
+        $listProgram = ProgramBantuan::select('nama_program')->distinct()->get();
+        return view('guest.program_bantuan.index', compact('data', 'listProgram'));
     }
 
     /**

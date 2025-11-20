@@ -8,7 +8,6 @@
             </a>
         </div>
 
-
         <div class="row g-4">
             @forelse($data as $row)
                 <div class="col-md-4">
@@ -27,7 +26,6 @@
                                 <i class="bi bi-pencil"></i> Edit
                             </a>
 
-
                             <form action="{{ route('guest.verifikasi_lapangan.destroy', $row->verifikasi_id) }}"
                                 method="POST" onsubmit="return confirm('Hapus data ini?')">
                                 @csrf @method('DELETE')
@@ -42,5 +40,11 @@
                 <div class="text-center text-muted mt-4">Belum ada verifikasi lapangan.</div>
             @endforelse
         </div>
+
+        {{-- Pagination --}}
+        <div class="mt-4 d-flex justify-content-center">
+            {{ $data->links('pagination::bootstrap-5') }}
+        </div>
+
     </div>
 @endsection

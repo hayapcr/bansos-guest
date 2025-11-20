@@ -9,6 +9,61 @@
         </a>
     </div>
 
+    {{-- FILTER + SEARCH FORM --}}
+    <form method="GET" action="{{ route('guest.warga.index') }}" class="mb-4">
+        <div class="card border-0 shadow-sm rounded-4 p-3">
+            <div class="row align-items-center">
+
+                {{-- FILTER JENIS KELAMIN --}}
+                <div class="col-md-3 mb-3">
+                    <label class="fw-bold text-success mb-2">Filter Jenis Kelamin</label>
+                    <select name="jenis_kelamin" class="form-select rounded-pill"
+                            onchange="this.form.submit()">
+                        <option value="">Semua</option>
+                        <option value="Laki-laki" {{ request('jenis_kelamin')=='Laki-laki' ? 'selected' : '' }}>
+                            Laki-laki
+                        </option>
+                        <option value="Perempuan" {{ request('jenis_kelamin')=='Perempuan' ? 'selected' : '' }}>
+                            Perempuan
+                        </option>
+                    </select>
+                </div>
+
+                {{-- SEARCH --}}
+                <div class="col-md-3 mb-3">
+                    <label class="fw-bold text-success mb-2">Pencarian</label>
+                    <div class="input-group">
+
+                        <input type="text" name="search" class="form-control rounded-start-pill"
+                               value="{{ request('search') }}"
+                               placeholder="Cari nama / KTP">
+
+                        <button type="submit" class="input-group-text rounded-end-pill">
+                            <svg class="icon icon-xxs" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+
+                        {{-- ========== TOMBOL CLEAR (DITAMBAHKAN) ========== --}}
+                        @if(request('search'))
+                            <a href="{{ request()->fullUrlWithQuery(['search' => null]) }}"
+                               class="btn btn-outline-secondary ms-2 rounded-pill"
+                               id="clear-search">
+                                Clear
+                            </a>
+                        @endif
+                        {{-- ========== END TOMBOL CLEAR ========== --}}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+    {{-- END FILTER FORM --}}
+
     {{-- LIST DATA WARGA --}}
     @forelse($data as $w)
         <div class="card mb-3 border-0 shadow-sm rounded-4 hover-scale">
@@ -54,7 +109,7 @@
         <div class="text-center text-muted mt-4">Belum ada data warga.</div>
     @endforelse
 
-    {{-- PAGINATION (SAMA SEPERTI YANG KAMU INGINKAN) --}}
+    {{-- PAGINATION --}}
     <div class="mt-4 d-flex justify-content-center">
         {{ $data->links('pagination::bootstrap-5') }}
     </div>
