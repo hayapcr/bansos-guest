@@ -41,6 +41,12 @@
         <div class="text-center text-muted mt-4">Belum ada program bantuan.</div>
         @endforelse
     </div>
+
+    {{-- PAGINATION --}}
+    <div class="mt-4 d-flex justify-content-center">
+        {{ $data->links('pagination::bootstrap-5') }}
+    </div>
+
 </div>
 
 <style>

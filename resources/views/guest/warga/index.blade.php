@@ -9,19 +9,17 @@
         </a>
     </div>
 
-    {{--  Cek apakah ada data --}}
+    {{-- LIST DATA WARGA --}}
     @forelse($data as $w)
         <div class="card mb-3 border-0 shadow-sm rounded-4 hover-scale">
             <div class="card-body d-flex align-items-center justify-content-between flex-wrap">
 
-                {{--  Ikon Orang --}}
                 <div class="d-flex align-items-center me-3">
                     <div class="icon-wrapper bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3"
                          style="width: 70px; height: 70px;">
                         <i class="bi bi-person-circle text-success" style="font-size: 2.5rem;"></i>
                     </div>
 
-                    {{--  Informasi utama warga --}}
                     <div>
                         <h5 class="fw-bold text-success mb-1">{{ $w->nama }}</h5>
                         <small class="d-block text-muted">No KTP: {{ $w->no_ktp }}</small>
@@ -33,7 +31,6 @@
                     </div>
                 </div>
 
-                {{--  Tombol Aksi --}}
                 <div class="mt-3 mt-md-0 text-end">
                     <a href="{{ route('guest.warga.edit', $w->warga_id) }}"
                        class="btn btn-sm btn-outline-success rounded-pill me-1">
@@ -56,9 +53,14 @@
     @empty
         <div class="text-center text-muted mt-4">Belum ada data warga.</div>
     @endforelse
+
+    {{-- PAGINATION (SAMA SEPERTI YANG KAMU INGINKAN) --}}
+    <div class="mt-4 d-flex justify-content-center">
+        {{ $data->links('pagination::bootstrap-5') }}
+    </div>
+
 </div>
 
-{{--  Tambahkan efek hover agar lebih interaktif --}}
 <style>
 .hover-scale {
     transition: transform 0.3s ease, box-shadow 0.3s ease;

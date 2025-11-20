@@ -13,7 +13,7 @@ class ProgramBantuanController extends Controller
      */
     public function index()
     {
-        $data = ProgramBantuan::all();
+        $data = ProgramBantuan::paginate(10);
         return view('guest.program_bantuan.index', compact('data'));
     }
 
