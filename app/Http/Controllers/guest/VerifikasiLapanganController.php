@@ -12,11 +12,16 @@ class VerifikasiLapanganController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $data = VerifikasiLapangan::with('pendaftar')->paginate(12);
-        return view('guest.verifikasi_lapangan.index', compact('data'));
-    }
+    public function index(Request $request)
+{
+    $data = VerifikasiLapangan::with('pendaftar.warga')
+        ->searchPendaftar($request->search)        
+        ->filterSkor($request->skor)
+        ->paginate(12)
+        ->withQueryString();
+    return view('guest.verifikasi_lapangan.index', compact('data'));
+}
+
 
     /**
      * Show the form for creating a new resource.

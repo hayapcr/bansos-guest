@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class PendaftarBantuan extends Model
 {
@@ -24,4 +25,24 @@ class PendaftarBantuan extends Model
     {
         return $this->hasMany(VerifikasiLapangan::class, 'pendaftar_id');
     }
+
+    public function scopeFilter(Builder $query, $request, array $filterableColumns): Builder
+    {
+        foreach ($filterableColumns as $column) {
+            if ($request->filled($column)) {
+                $query->where($column, $request->input($column));
+            }
+        }
+        return $query;
+    }
+
+    public function scopeSearch($query, $request)
+{
+    if ($request->filled('search')) {
+        $query->whereHas('program', function($q) use ($request) {
+            $q->where('nama_program', 'LIKE', '%' . $request->search . '%');
+        });
+    }
+    return $query;
+}
 }

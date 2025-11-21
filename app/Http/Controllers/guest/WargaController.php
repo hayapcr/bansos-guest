@@ -14,7 +14,7 @@ class WargaController extends Controller
     public function index(Request $request)
     {
         $filterableColumns = ['jenis_kelamin'];
-       $data = Warga::filter($request, $filterableColumns)
+        $data = Warga::filter($request, $filterableColumns)
             ->when($request->search, function ($q) use ($request) {
                 $q->where('nama', 'like', '%'.$request->search.'%')
                   ->orWhere('no_ktp', 'like', '%'.$request->search.'%');

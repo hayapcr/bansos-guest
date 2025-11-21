@@ -13,9 +13,14 @@ class PendaftarBantuanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = PendaftarBantuan::with(['program','warga'])->paginate(12);
+        $data = PendaftarBantuan::with(['program','warga'])
+        ->search($request) // Cari nama program
+        ->filter($request, ['status_seleksi']) // Filter status
+        ->orderBy('pendaftar_id', 'desc')
+        ->paginate(12)
+        ->withQueryString();
         return view('guest.pendaftar_bantuan.index', compact('data'));
     }
 

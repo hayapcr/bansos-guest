@@ -9,47 +9,60 @@
         </a>
     </div>
 
-    {{-- FILTER + SEARCH FORM --}}
+    {{-- ========================= FILTER + SEARCH (MODEL VERIFIKASI LAPANGAN) ========================= --}}
     <form method="GET" action="{{ route('guest.program_bantuan.index') }}" class="mb-4">
-        <div class="row g-2 align-items-end">
+        <div class="card border-0 shadow-sm rounded-4 p-3">
+            <div class="row align-items-center">
 
-            {{-- FILTER NAMA PROGRAM --}}
-            <div class="col-md-4 mb-3">
-                <label class="form-label fw-semibold">Filter Nama Program</label>
-                <select name="nama_program" class="form-select rounded-pill" onchange="this.form.submit()">
-                    <option value="">-- Semua Program --</option>
-                    @foreach($listProgram as $p)
-                        <option value="{{ $p->nama_program }}"
-                            {{ request('nama_program') == $p->nama_program ? 'selected' : '' }}>
-                            {{ $p->nama_program }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
+                {{-- FILTER NAMA PROGRAM --}}
+                <div class="col-md-3 mb-3">
+                    <label class="fw-bold text-success mb-2">Filter Program</label>
+                    <select name="nama_program" class="form-select rounded-pill"
+                            onchange="this.form.submit()">
 
-            {{-- SEARCH TAHUN --}}
-            <div class="col-md-3 mb-3">
-                <label class="form-label fw-semibold">Cari Tahun</label>
-                <div class="input-group">
-                    <input type="text" name="search" class="form-control"
-                           value="{{ request('search') }}" placeholder="Cari Tahun" aria-label="Search">
-                    <button type="submit" class="input-group-text">
-                        <svg class="icon icon-xxs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
+                        <option value="">Semua Program</option>
 
-                    @if(request('search'))
-                        <a href="{{ request()->fullUrlWithQuery(['search'=> null]) }}" class="btn btn-outline-secondary ms-2" id="clear-search">
-                            Clear
-                        </a>
-                    @endif
+                        @foreach($listProgram as $p)
+                            <option value="{{ $p->nama_program }}"
+                                {{ request('nama_program') == $p->nama_program ? 'selected' : '' }}>
+                                {{ $p->nama_program }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
-            </div>
 
+                {{-- SEARCH TAHUN --}}
+                <div class="col-md-3 mb-3">
+                    <label class="fw-bold text-success mb-2">Pencarian</label>
+                    <div class="input-group">
+
+                        <input type="text" name="search"
+                               class="form-control rounded-start-pill"
+                               value="{{ request('search') }}"
+                               placeholder="Cari tahun program...">
+
+                        <button type="submit" class="input-group-text rounded-end-pill">
+                            <svg class="icon icon-xxs" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z">
+                                </path>
+                            </svg>
+                        </button>
+
+                        {{-- CLEAR --}}
+                        @if(request('search') || request('nama_program'))
+                            <a href="{{ route('guest.program_bantuan.index') }}"
+                               class="btn btn-outline-secondary ms-2 rounded-pill">
+                                Clear
+                            </a>
+                        @endif
+                    </div>
+                </div>
+
+            </div>
         </div>
     </form>
-    {{-- END FILTER + SEARCH FORM --}}
+    {{-- ====================== END FILTER + SEARCH ====================== --}}
 
     {{-- LIST PROGRAM BANTUAN --}}
     <div class="row g-4">
@@ -93,7 +106,12 @@
 </div>
 
 <style>
-.hover-scale { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.hover-scale:hover { transform: translateY(-6px); box-shadow: 0 10px 18px rgba(0, 122, 102, 0.15); }
+.hover-scale {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-scale:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 18px rgba(0, 122, 102, 0.15);
+}
 </style>
 @endsection

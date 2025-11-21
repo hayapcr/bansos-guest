@@ -14,4 +14,22 @@ class VerifikasiLapangan extends Model
     {
         return $this->belongsTo(PendaftarBantuan::class, 'pendaftar_id');
     }
+
+    public function scopeFilterSkor($query, $skor)
+{
+    if ($skor) {
+        return $query->where('skor', '>=', $skor);
+    }
+    return $query;
+}
+
+public function scopeSearchPendaftar($query, $keyword)
+{
+    if ($keyword) {
+        return $query->whereHas('pendaftar.warga', function ($w) use ($keyword) {
+            $w->where('nama', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+    return $query;
+}
 }
