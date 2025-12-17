@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Upload Berkas</label>
+                    <label class="form-label">Upload Berkasa</label>
                     <input type="file" name="media[]" class="form-control" multiple>
                 </div>
 
