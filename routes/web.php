@@ -43,7 +43,7 @@ Route::post('/ah/login', [AuthController::class, 'login'])->name('auth.login');
 /* ============================================================
 |   PUBLIC / GUEST ROUTES (BISA DIAKSES TANPA LOGIN)
 ============================================================ */
-Route::get('/dashboard', [App\Http\Controllers\Guest\DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\guest\DashboardController::class, 'index'])->name('dashboard');
 
 Route::prefix('guest')->name('guest.')->group(function () {
     Route::view('about', 'guest.about')->name('about');
