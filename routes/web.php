@@ -3,17 +3,17 @@
 use App\Http\Controllers\AuthController;
 
 // AUTH CONTROLLER
-use App\Http\Controllers\Guest\PendaftarBantuanController;
+use App\Http\Controllers\guest\PendaftarBantuanController;
 
 // GUEST CONTROLLERS
-use App\Http\Controllers\Guest\PenerimaBantuanController;
-use App\Http\Controllers\Guest\ProgramBantuanController;
-use App\Http\Controllers\Guest\RiwayatPenyaluranBantuanController;
-use App\Http\Controllers\Guest\UserController;
-use App\Http\Controllers\Guest\VerifikasiLapanganController;
-use App\Http\Controllers\Guest\WargaController;
-use App\Http\Controllers\Guest\ProfilController;
-use App\Http\Controllers\Guest\WelcomeController;
+use App\Http\Controllers\guest\PenerimaBantuanController;
+use App\Http\Controllers\guest\ProgramBantuanController;
+use App\Http\Controllers\guest\RiwayatPenyaluranBantuanController;
+use App\Http\Controllers\guest\UserController;
+use App\Http\Controllers\guest\VerifikasiLapanganController;
+use App\Http\Controllers\guest\WargaController;
+use App\Http\Controllers\guest\ProfilController;
+use App\Http\Controllers\guest\WelcomeController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
