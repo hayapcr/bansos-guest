@@ -22,6 +22,14 @@ class CreateFirstUser extends Seeder
             'role'     => 'guest'
         ]);
 
+        // USER KEDUA — ADMIN ✅
+        User::create([
+            'name'     => 'Hana',
+            'email'    => 'Hana@gmail.com',
+            'password' => Hash::make('Hana123'),
+            'role'     => 'admin'
+        ]);
+
         $faker = Faker::create('id_ID');
 
         // Role yang tersedia
