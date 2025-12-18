@@ -65,6 +65,7 @@
         <div class="col-md-4">
             <div class="card h-100 border-0 shadow-sm rounded-4 hover-scale" style="border-top:5px solid #007a66;">
 
+                
                 {{-- MEDIA PREVIEW --}}
                 @php
                     $media = $row->media->first();
