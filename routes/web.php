@@ -33,6 +33,7 @@ Route::get('/', function () {
 // Halaman welcome untuk guest
 Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 
+
 /* ============================================================
 |   HALAMAN LOGIN
 ============================================================ */
