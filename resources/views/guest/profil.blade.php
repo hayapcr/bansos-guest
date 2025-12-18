@@ -13,7 +13,7 @@
     <i class="bi bi-linkedin"></i>
 </a>
 
-            <a href="https://github.com/hayanur" target="_blank" class="text-dark"><i class="bi bi-github"></i></a>
+            <a href="https://github.com/hayapcr/bansos-guest.git" target="_blank" class="text-dark"><i class="bi bi-github"></i></a>
             <a href="https://instagram.com/hayanr_25" target="_blank" class="text-danger"><i class="bi bi-instagram"></i></a>
             <a href="mailto:haya24si@mahasiswa.pcr.ac.id" class="text-danger">
     <i class="bi bi-envelope-fill"></i>
